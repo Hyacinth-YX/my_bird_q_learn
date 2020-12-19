@@ -6,7 +6,7 @@ import os
 from pybird.game import Game
 
 MAGIC_POS = (9999, 9999)
-
+log_file = "./log.txt"
 
 class Bot:
     def __init__(self, game):
@@ -60,6 +60,8 @@ class Bot:
             self.plan (state)
             # restart game
             print ('score:', self.game.record.get (), 'best: ', self.game.record.best_score)
+            with open(log_file,'a') as f:
+                f.write(f"({self.try_times}-{self.game.record.get ()}) score: {self.game.record.get ()} best: {self.game.record.best_score}\n")
             self.game.restart ()
             self.game.play ()
 

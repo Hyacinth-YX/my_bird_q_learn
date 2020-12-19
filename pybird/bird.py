@@ -12,7 +12,6 @@ class Bird(pyglet.sprite.Sprite):
         self.jumped = False
 
     def update(self, dt):
-
         # bird only moves up and down, so the speed is the y speed
         self.speed += Bird.GRAVITY_ACC * dt
         self.ang_speed += Bird.ANGULAR_ACC * dt
