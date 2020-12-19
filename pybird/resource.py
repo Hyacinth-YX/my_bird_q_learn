@@ -9,7 +9,7 @@ atlas_file = pyglet.resource.file('atlas.txt', 'rb')
 res_img = pyglet.resource.image('atlas.png')
 
 for line in atlas_file:
-    cols = line.split(' ')
+    cols = str(line,encoding="utf-8").strip().split(' ')
     x = int(round(res_img.width * float(cols[3])))
     # pyglet's y axis is from down to up
     y = res_img.height - int(round(res_img.height * float(cols[4]))) -int(cols[2])
@@ -26,8 +26,11 @@ bird_gif = pyglet.image.Animation.from_image_sequence(bird_seq, 0.2)
 # group the big digit picture to a list
 # NOTE the digit picture in the list should be the ImageData type instead of
 #      TextureRegion, for TextureRegion CANNOT blit into a larger image
-big_nums = [vars()['font_0' + str(48 + i)].get_image_data() for i in range(10)]
-small_nums = [vars()['number_score_0' + str(i)].get_image_data() for i in range(10)]
+big_nums = []
+small_nums = []
+for i in range(10):
+    big_nums.append((vars()['font_0' + str(48 + i)]).get_image_data())
+    small_nums.append(vars ()['number_score_0' + str (i)].get_image_data ())
 
 # sound file
 tap_sound = pyglet.resource.media('sfx_wing.wav', streaming = False)

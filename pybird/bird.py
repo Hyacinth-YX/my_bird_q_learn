@@ -1,8 +1,8 @@
 import pyglet
 import resource
-
+from game import Game
 class Bird(pyglet.sprite.Sprite):
-    GRAVITY_ACC = 500
+    GRAVITY_ACC = 700
     ANGULAR_ACC = 350
 
     def __init__(self, *args, **kwargs):
@@ -12,15 +12,15 @@ class Bird(pyglet.sprite.Sprite):
         self.jumped = False
 
     def update(self, dt):
-        from game import Game
+
         # bird only moves up and down, so the speed is the y speed
         self.speed += Bird.GRAVITY_ACC * dt
         self.ang_speed += Bird.ANGULAR_ACC * dt
         if self.jumped:
-            self.speed = -180
+            self.speed = -200
             self.ang_speed = -400
-            if Game.sound:
-                resource.tap_sound.play()
+            # if Game.sound:
+            #     resource.tap_sound.play()
         self.y -= self.speed * dt
         self.rotation += self.ang_speed * Game.TIME_INTERVAL
         if self.y > Game.WINDOW_HEIGHT:

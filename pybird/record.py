@@ -41,6 +41,7 @@ class Record:
 
     @staticmethod
     def get_num_image(num, imgs):
+        num = int(num)
         if num == 0:
             return imgs[0]
         seq = []
@@ -49,7 +50,7 @@ class Record:
             r = num % 10
             seq.insert(0, imgs[r])
             width += imgs[r].width
-            num /= 10
+            num = int(num/10) # fixed at 12.10
         ret_img = pyglet.image.Texture.create(width, imgs[0].height)
         w = 0
         for img in seq:

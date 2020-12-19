@@ -12,7 +12,7 @@ class Game:
     WINDOW_HEIGHT = resource.bg_day.height
     PIPE_WIDTH = resource.pipe_up.width
     PIPE_HEIGHT = resource.pipe_up.height
-    PIPE_WIDTH_INTERVAL = 160
+    PIPE_WIDTH_INTERVAL = 175
     PIPE_HEIGHT_INTERVAL = 100
     PIPE_HEIGHT_OFFSET = PIPE_HEIGHT + PIPE_HEIGHT_INTERVAL
     LAND_HEIGHT = resource.land.height
