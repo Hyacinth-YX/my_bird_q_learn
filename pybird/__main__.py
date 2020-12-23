@@ -1,7 +1,7 @@
 import pyglet
 import resource
 from pyglet.window import mouse
-from game import *
+from pybird.game import *
 
 game = Game()
 

@@ -1,10 +1,10 @@
 import random
 import math
 import pyglet
-import bird
-from pipe import *
-from record import *
-import resource
+import pybird.bird as bird
+from pybird.pipe import *
+from pybird.record import *
+import pybird.resource as resource
 
 class Game:
     # constants

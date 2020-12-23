@@ -1,6 +1,6 @@
 import pyglet
 import resource
-from game import Game
+
 class Bird(pyglet.sprite.Sprite):
     GRAVITY_ACC = 700
     ANGULAR_ACC = 350
@@ -13,6 +13,7 @@ class Bird(pyglet.sprite.Sprite):
 
     def update(self, dt):
         # bird only moves up and down, so the speed is the y speed
+        from pybird.game import Game
         self.speed += Bird.GRAVITY_ACC * dt
         self.ang_speed += Bird.ANGULAR_ACC * dt
         if self.jumped:
