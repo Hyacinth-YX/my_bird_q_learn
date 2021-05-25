@@ -4,9 +4,10 @@ import pickle
 import atexit
 import os
 from pybird.game import Game
+import sys
 
 MAGIC_POS = (9999, 9999)
-log_file = "./log.txt"
+
 
 class Bot:
     def __init__(self, game):
@@ -28,18 +29,18 @@ class Bot:
         self.pre_s = MAGIC_POS
         self.pre_a = 0
 
-        self.chunk = 4
-        self.xchunk = 2
+        self.chunk = 10
+        self.xchunk = 5
         self.try_times = 0
 
         self.to_reward_passing=3
         self.initialize ()
 
-        if os.path.isfile ('dict_Q'):
-            self.Q = pickle.load (open ('dict_Q', 'rb'))
+        if os.path.isfile (f'dict_Q{task}'):
+            self.Q = pickle.load (open (f'dict_Q{task}', 'rb'))
 
         def do_at_exit():
-            pickle.dump (self.Q, open ('dict_Q', 'wb'))
+            pickle.dump (self.Q, open (f'dict_Q{task}', 'wb'))
             print ('wirte to dict_Q')
 
         atexit.register (do_at_exit)
@@ -178,6 +179,11 @@ class Bot:
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        task = sys.argv[1]
+    else:
+        task = ""
+    log_file = f"./log{task}.txt"
     show_window = True
     enable_sound = False
     game = Game ()
